@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontak Kami</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel ="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 font-sans">
+  <!-- Navigasi -->
+  <div class="navbar bg-base-100 shadow-sm">
+    <div class="flex-1">
+      <div class="flex space-x-6">
+        <a href="index.html" class="btn btn-ghost flex items-center hover:text-amber-300">
+          <i class="fas fa-home mr-2"></i> BERANDA
+        </a>
+        <a href="produk.html" class="btn btn-ghost hover:text-amber-300">Produk</a>
+        <a href="kontak.html" class="btn btn-ghost hover:text-amber-300">Kontak</a>
+        <a href="tentang.html" class="btn btn-ghost hover:text-amber-300">Tentang</a>
+      </div>
+    </div>
+    <div class="flex gap-4 items-center">
+      <div id="cartIcon" class="relative cursor-pointer">
+        <i class="fas fa-shopping-cart text-xl"></i>
+        <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">0</span>
+      </div>
+      <div class="dropdown dropdown-end">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar" id="profileButton">
+          <i class="fas fa-user text-xl"></i>
+        </div>
+        <ul
+          tabindex="0"
+          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow hidden"
+          id="profileMenu">
+          <li>
+            <a class="justify-between">
+              Profil
+              <span class="badge">Baru</span>
+            </a>
+          </li>
+          <li><a>Pengaturan</a></li>
+          <li><a>Keluar</a></li>
+        </ul>
+      </div>
+      <!-- Tambahkan tombol pencarian di navbar header -->
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-amber-500">
+          <input id="searchInput" type="text" placeholder="Cari produk..." class="flex-grow focus:outline-none">
+          <button id="searchButton" class="ml-2 text-amber-900 hover:text-amber-700">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Konten Utama -->
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">Hubungi Kami</h1>
+    <p class="text-gray-600 mb-4">Jika Anda memiliki pertanyaan atau membutuhkan bantuan, jangan ragu untuk menghubungi kami melalui informasi di bawah ini:</p>
+    <div class="bg-white p-6 rounded-lg shadow-md">
+      <h2 class="text-2xl font-bold text-amber-900 mb-4">Informasi Kontak</h2>
+      <p class="text-gray-700"><i class="fas fa-map-marker-alt mr-2"></i> Plaza Senayan Mall, Gelora, Tanah Abang, Central Jakarta City, Jakarta 10270</p>
+      <p class="text-gray-700"><i class="fas fa-phone-alt mr-2"></i> (62)85724033283</p>
+      <p class="text-gray-700"><i class="fas fa-envelope mr-2"></i> onlineshop@carhartt-wip.com</p>
+    </div>
+    <div class="mt-6">
+      <h2 class="text-2xl font-bold text-amber-900 mb-4">Formulir Kontak</h2>
+      <form class="bg-white p-6 rounded-lg shadow-md">
+        <div class="mb-4">
+          <label for="name" class="block text-gray-700 font-bold mb-2">Nama</label>
+          <input type="text" id="name" class="input input-bordered w-full" placeholder="Nama Anda">
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
+          <input type="email" id="email" class="input input-bordered w-full" placeholder="Email Anda">
+        </div>
+        <div class="mb-4">
+          <label for="message" class="block text-gray-700 font-bold mb-2">Pesan</label>
+          <textarea id="message" class="textarea textarea-bordered w-full" rows="4" placeholder="Pesan Anda"></textarea>
+        </div>
+        <button type="submit" class="bg-amber-900 hover:bg-amber-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          Kirim Pesan
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Sembunyikan menu profil secara default
+    const profileButton = document.getElementById('profileButton');
+    const profileMenu = document.getElementById('profileMenu');
+
+    profileButton.addEventListener('click', () => {
+      profileMenu.classList.toggle('hidden'); // Tampilkan atau sembunyikan menu profil
+    });
+
+    // Sembunyikan menu profil jika pengguna mengklik di luar menu
+    document.addEventListener('click', (event) => {
+      if (!profileButton.contains(event.target) && !profileMenu.contains(event.target)) {
+        profileMenu.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

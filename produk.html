@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produk</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet " href="style.css"
+</head>
+<body class="bg-gray-100 font-sans">
+  <!-- Navigasi -->
+  <div class="navbar bg-base-100 shadow-sm">
+    <div class="flex-1">
+      <div class="flex space-x-6">
+        <a href="index.html" class="btn btn-ghost flex items-center hover:text-amber-300">
+          <i class="fas fa-home mr-2"></i> BERANDA
+        </a>
+        <a href="produk.html" class="btn btn-ghost hover:text-amber-300">Produk</a>
+        <a href="kontak.html" class="btn btn-ghost hover:text-amber-300">Kontak</a>
+        <a href="tentang.html" class="btn btn-ghost hover:text-amber-300">Tentang</a>
+      </div>
+    </div>
+    <div class="flex gap-4 items-center">
+      <div id="cartIcon" class="relative cursor-pointer">
+        <i class="fas fa-shopping-cart text-xl"></i>
+        <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">0</span>
+      </div>
+      <div class="dropdown dropdown-end">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+          <i class="fas fa-user text-xl"></i>
+        </div>
+        <ul
+          tabindex="0"
+          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow hidden">
+          <li>
+            <a class="justify-between">
+              Profil
+              <span class="badge">Baru</span>
+            </a>
+          </li>
+          <li><a>Pengaturan</a></li>
+          <li><a>Keluar</a></li>
+        </ul>
+      </div>
+      <!-- Tambahkan tombol pencarian di navbar header -->
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-amber-500">
+          <input id="searchInput" type="text" placeholder="Cari produk..." class="flex-grow focus:outline-none">
+          <button id="searchButton" class="ml-2 text-amber-900 hover:text-amber-700">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">Produk Kami</h1>
+    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Produk akan dimuat di sini secara dinamis -->
+    </div>
+  </div>
+
+  <div id="cartModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-lg shadow-xl w-11/12 md:w-1/2 lg:w-1/3 max-w-md">
+      <div class="p-6">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold text-amber-900">Keranjang Anda</h2>
+          <button id="closeCartModal" class="text-gray-500 hover:text-gray-700">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div id="cartItems" class="mb-6 max-h-64 overflow-y-auto">
+          <!-- Item keranjang akan ditambahkan di sini secara dinamis -->
+        </div>
+        <div class="border-t pt-4">
+          <div class="flex justify-between font-bold text-lg mb-4">
+            <span>Total:</span>
+            <span id="cartTotal">Rp0.00</span>
+          </div>
+          <button id="checkoutButton" class="bg-amber-900 hover:bg-amber-800 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">
+            Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="receiptModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-lg shadow-xl w-11/12 md:w-1/3 max-w-xs">
+      <div class="p-4 flex flex-col items-center">
+        <div class="flex justify-between w-full items-center mb-2">
+          <h2 class="text-xl font-bold text-amber-900">Struk</h2>
+          <button id="closeReceiptModal" class="text-gray-500 hover:text-gray-700">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="w-full max-w-xs bg-white p-4 border border-gray-300">
+          <div class="text-center mb-4">
+            <div class="font-bold text-lg">TOKO CARHARTT</div>
+            <div class="text-xs">123 Workwear Ave, Fashion District</div>
+            <div class="text-xs">Tel: (555) 123-4567</div>
+            <div class="text-xs">Tanggal: <span id="receiptDate"></span></div>
+            <div class="text-xs">No. Struk: <span id="receiptNumber"></span></div>
+          </div>
+          <div class="border-t border-b border-dashed border-gray-300 py-2 mb-2">
+            <div class="flex justify-between text-xs font-bold">
+              <div class="w-1/2">ITEM</div>
+              <div class="w-1/4 text-center">QTY</div>
+              <div class="w-1/4 text-right">TOTAL</div>
+            </div>
+          </div>
+          <div id="receiptItems" class="mb-4">
+            <!-- Item struk akan ditambahkan di sini secara dinamis -->
+          </div>
+          <div class="border-t border-dashed border-gray-300 pt-2">
+            <div class="flex justify-between text-xs">
+              <div>Subtotal:</div>
+              <div id="receiptSubtotal">Rp0.00</div>
+            </div>
+            <div class="flex justify-between text-xs">
+              <div>Pajak (10%):</div>
+              <div id="receiptTax">Rp0.00</div>
+            </div>
+            <div class="flex justify-between font-bold mt-2">
+              <div>TOTAL:</div>
+              <div id="receiptTotal">Rp0.00</div>
+            </div>
+          </div>
+          <div class="text-center mt-4 text-xs">
+            <p>Terima kasih telah berbelanja dengan kami!</p>
+            <p>Silakan kembali dengan struk Anda untuk penukaran barang.</p>
+            <p>www.carhartt-store.com</p>
+          </div>
+        </div>
+        <button id="printReceipt" class="mt-4 bg-amber-900 hover:bg-amber-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          Cetak Struk
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="produk.js"></script>
+</body>
+</html>

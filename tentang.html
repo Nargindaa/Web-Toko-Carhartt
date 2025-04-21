@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Kami</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 font-sans">
+  <!-- Navigasi -->
+  <div class="navbar bg-base-100 shadow-sm">
+    <div class="flex-1">
+      <div class="flex space-x-6">
+        <a href="index.html" class="btn btn-ghost flex items-center hover:text-amber-300">
+          <i class="fas fa-home mr-2"></i> BERANDA
+        </a>
+        <a href="produk.html" class="btn btn-ghost hover:text-amber-300">Produk</a>
+        <a href="kontak.html" class="btn btn-ghost hover:text-amber-300">Kontak</a>
+        <a href="tentang.html" class="btn btn-ghost hover:text-amber-300">Tentang</a>
+      </div>
+    </div>
+    <div class="flex gap-4 items-center">
+      <div id="cartIcon" class="relative cursor-pointer">
+        <i class="fas fa-shopping-cart text-xl"></i>
+        <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">0</span>
+      </div>
+      <div class="dropdown dropdown-end">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar" id="profileButton">
+          <i class="fas fa-user text-xl"></i>
+        </div>
+        <ul
+          tabindex="0"
+          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow hidden"
+          id="profileMenu">
+          <li>
+            <a class="justify-between">
+              Profil
+              <span class="badge">Baru</span>
+            </a>
+          </li>
+          <li><a>Pengaturan</a></li>
+          <li><a>Keluar</a></li>
+        </ul>
+      </div>
+      <!-- Tambahkan tombol pencarian di navbar header -->
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-amber-500">
+          <input id="searchInput" type="text" placeholder="Cari produk..." class="flex-grow focus:outline-none">
+          <button id="searchButton" class="ml-2 text-amber-900 hover:text-amber-700">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Konten Utama -->
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">Tentang Kami</h1>
+    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+      <h2 class="text-2xl font-bold text-amber-900 mb-4">Kisah Kami</h2>
+      <p class="text-gray-700">Carhartt telah menjadi simbol pakaian kerja premium sejak 1889. Kami berdedikasi untuk menyediakan pakaian yang tahan lama, nyaman, dan dirancang untuk memenuhi kebutuhan pekerja keras di seluruh dunia.</p>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+      <h2 class="text-2xl font-bold text-amber-900 mb-4">Karir</h2>
+      <p class="text-gray-700">Bergabunglah dengan tim kami dan jadilah bagian dari perusahaan yang menghargai inovasi, kerja keras, dan keberlanjutan. Kami selalu mencari individu berbakat untuk bergabung dengan keluarga Carhartt.</p>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+      <h2 class="text-2xl font-bold text-amber-900 mb-4">Keberlanjutan</h2>
+      <p class="text-gray-700">Kami berkomitmen untuk meminimalkan dampak lingkungan dan mendukung komunitas lokal. Keberlanjutan adalah inti dari setiap keputusan yang kami buat.</p>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+      <h2 class="text-2xl font-bold text-amber-900 mb-4">Pers</h2>
+      <p class="text-gray-700">Untuk informasi media dan siaran pers terbaru, silakan hubungi tim komunikasi kami di <a href="mailto:press@carhartt.com" class="text-amber-900 hover:underline">press@carhartt.com</a>.</p>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-md">
+      <h2 class="text-2xl font-bold text-amber-900 mb-4">Lokasi Toko</h2>
+      <p class="text-gray-700">Kunjungi toko kami di Plaza Senayan Mall, Gelora, Tanah Abang, Central Jakarta City, Jakarta 10270. Kami juga memiliki lokasi di berbagai kota besar di seluruh dunia.</p>
+    </div>
+  </div>
+
+  <script>
+    // Sembunyikan menu profil secara default
+    const profileButton = document.getElementById('profileButton');
+    const profileMenu = document.getElementById('profileMenu');
+
+    profileButton.addEventListener('click', () => {
+      profileMenu.classList.toggle('hidden'); // Tampilkan atau sembunyikan menu profil
+    });
+
+    // Sembunyikan menu profil jika pengguna mengklik di luar menu
+    document.addEventListener('click', (event) => {
+      if (!profileButton.contains(event.target) && !profileMenu.contains(event.target)) {
+        profileMenu.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
